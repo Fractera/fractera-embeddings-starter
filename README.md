@@ -22,8 +22,8 @@ a vector counted at Fractera (the skills catalog ships ready, 627) equals the on
 
 ## The price in memory
 
-A resident process like every element under pm2: the model loads at the start and stays — about **0.6 GB after the load, up to
-about 0.9 GB** while a batch of 100 texts is counted (Intel i7-6820HQ, 16 GB). One short text takes 6–25 ms, the load 2–4 s. There
+A resident process like every element under pm2: the model loads at the start and stays — about **0.8 GB for the whole element after the load
+(the server ~0.2 GB, the model ~0.6 GB), up to about 1.0 GB** while a batch of 100 texts is counted (Intel i7-6820HQ, 16 GB). One short text takes 6–25 ms, the load 2–4 s. There
 is no timer, no unload and no queue of its own: one batch is counted at a time.
 
 ## Using it

@@ -27,7 +27,7 @@
     ],
     "distDirEnv": "NEXT_DIST_DIR",
     "distDirNote": "The node builds into a neighbour folder named by this variable while the old build serves, then switches: no downtime. A replacement that does not declare it is stopped for the build.",
-    "memory": "A resident model: ~0.6 GB after the load, up to ~0.9 GB at a 100-text batch (626-1, Intel Mac). onnxruntime-node is pinned to 1.21.0: 1.23 does not load on macOS 12 (libc++ lacks std::to_chars for double), 1.24+ ship no macOS x64 binary."
+    "memory": "A resident model: the element process holds ~0.8 GB after the load (the server ~0.2 GB + the model ~0.6 GB) and up to ~1.0 GB while a batch of 100 texts is counted (626-2, Intel Mac). onnxruntime-node is pinned to 1.21.0: 1.23 does not load on macOS 12 (libc++ lacks std::to_chars for double), 1.24+ ship no macOS x64 binary."
   },
   "settings": {
     "door": "/api/settings/design",
