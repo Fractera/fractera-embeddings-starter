@@ -18,12 +18,15 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: root,
   // 314-2: данные страниц (JSON дерева) едут в standalone-сборку — запасной источник, когда `ELEMENT_DIR` не задан.
   outputFileTracingIncludes: {
-    '/**': ['./app/**/_data/*.json', './app/**/_pages/**/*.json'],
+    // 626-2: the binary of onnxruntime-node is loaded by a computed path (bin/napi-v3/<platform>/<arch>) — the tracer does not
+    // follow it; only this machine's folder rides into the build.
+    '/**': ['./app/**/_data/*.json', './app/**/_pages/**/*.json', `./node_modules/onnxruntime-node/bin/napi-v3/${process.platform}/${process.arch}/**`],
     // 458-3: шрифт сниппетов читается с диска (lib/snippet/render.mjs), сборщик сам его не находит.
     '/[lang]/**': ['./node_modules/@fontsource/inter/files/inter-*-normal.woff'],
   },
   turbopack: { root },
-  serverExternalPackages: ["better-sqlite3"],
+  // 626-2: the model's runtime is loaded from node_modules, never bundled (a native binary and its own loader).
+  serverExternalPackages: ["better-sqlite3", "@huggingface/transformers", "onnxruntime-node", "sharp"],
 
   // Old addresses live in other people's bookmarks: they answer with a permanent
   // redirect, not a 404.

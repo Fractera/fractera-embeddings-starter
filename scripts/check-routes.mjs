@@ -88,6 +88,8 @@ const ALLOWED = new Map([
   ['app/api/shell/[lang]/route.ts', 'шапка и подвал для служб узла'],
   ['app/api/users/[id]/route.ts', 'одна учётная запись'],
   ['app/api/users/route.ts', 'учётные записи'],
+  ['app/api/embed/route.ts', 'door embed: Turns texts into 384-number vectors with the node\'s local model (door:add, node step 548-16)'],
+  ['app/api/embed-status/route.ts', 'door embed-status: Tells which model counts vectors, its size and readiness (door:add, node step 548-16)'],
 ])
 
 const found = []

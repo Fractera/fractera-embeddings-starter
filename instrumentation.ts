@@ -12,6 +12,10 @@
 // 314-2: имя подписчика — из паспорта элемента (`lib/own-id.ts`), а не "root": у источника одна запись на имя.
 export async function register() {
   if (process.env.NEXT_RUNTIME !== "nodejs") return
+  // 626-2: the model loads at the start and stays (lib/embed/model.mjs). Not awaited — the site answers while it loads, and the
+  // status door says «loading» until then.
+  const { startModel } = await import("./lib/embed/model.mjs")
+  void startModel()
   const { ownId } = await import("./lib/own-id")
   const who = ownId()
   if (!who) console.warn("[settings] у элемента нет имени (паспорт OWN-SERVICE-PROPS/ → id или ITEM_ID) — на сигналы не подписываюсь")

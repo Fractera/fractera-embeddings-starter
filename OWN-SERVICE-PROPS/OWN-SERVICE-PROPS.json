@@ -1,10 +1,10 @@
 {
   "id": "embeddings",
-  "name": "embeddings",
-  "shortDescription": "WEB4 element embeddings, born from fractera-native-item-starter v0.1.34 on 2026-11-03. Its capabilities are written by its agent from Settings → Capabilities description.",
-  "longDescription": "",
-  "accepts": "",
-  "returns": "",
+  "name": "Embeddings",
+  "shortDescription": "The node’s own vectors: turns texts into 384-number vectors with a local multilingual model, on this computer, with no key and no internet.",
+  "longDescription": "Every vector of the node is counted here, by one model: paraphrase-multilingual-MiniLM-L12-v2 (384 numbers, about 50 languages, 128 tokens of each text), run by onnxruntime inside this element’s own process. The model loads at the start and stays: about 0.6 GB of memory after the load and up to about 0.9 GB while a batch of 100 texts is counted (measured on an Intel Mac, 626-1). The vectors element, the knowledge graph and the deep memory ask it; the core and the elements send texts to the vectors element and count nothing themselves. The model files come from this element’s own GitHub release, pinned by sha256, into the node’s data folder; the running element downloads nothing. Changing the model means recounting every stored vector of the node — the owner decides.",
+  "accepts": "POST /api/embed with the node key (X-Node-Key): { \"texts\": [\"…\"] } — 1 to 256 texts in any language.",
+  "returns": "{ model, dims: 384, vectors } — one normalized vector per text, in the order given; GET /api/embed-status: { model, dims, ready, loadedMs, rssMb, calls }.",
   "designSkill": "impeccable",
   "isFracteraArchitecture": true,
   "framework": "next",
@@ -12,7 +12,6 @@
   "visibility": "node",
   "calls": [
     "auth",
-    "data",
     "config",
     "design"
   ],

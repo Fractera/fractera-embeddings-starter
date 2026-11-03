@@ -121,6 +121,72 @@
               "callers": [
                 "*"
               ]
+            },
+            {
+              "skill": "embed",
+              "protocol": "http",
+              "method": "POST",
+              "path": "/api/embed",
+              "key": "node-key",
+              "input": {
+                "texts": [
+                  "Привет",
+                  "Hello"
+                ]
+              },
+              "output": {
+                "model": "paraphrase-multilingual-MiniLM-L12-v2",
+                "dims": 384,
+                "vectors": [
+                  [
+                    0.0123,
+                    -0.0457,
+                    "… 384 numbers"
+                  ],
+                  [
+                    0.0119,
+                    -0.0412,
+                    "… 384 numbers"
+                  ]
+                ]
+              },
+              "errors": {
+                "401": "bad_key",
+                "422": "no_texts · too_many_texts · bad_text",
+                "503": "model_not_ready"
+              },
+              "callers": [
+                "vectors",
+                "graph",
+                "memory"
+              ]
+            },
+            {
+              "skill": "embed-status",
+              "protocol": "http",
+              "method": "GET",
+              "path": "/api/embed-status",
+              "key": "node-key",
+              "input": {},
+              "output": {
+                "model": "paraphrase-multilingual-MiniLM-L12-v2",
+                "dims": 384,
+                "ready": true,
+                "status": "ready",
+                "loadedMs": 3218,
+                "rssMb": 595,
+                "calls": 42,
+                "maxTokens": 128,
+                "maxTexts": 256
+              },
+              "errors": {
+                "401": "bad_key"
+              },
+              "callers": [
+                "vectors",
+                "graph",
+                "memory"
+              ]
             }
           ],
           "consumes": [
@@ -372,6 +438,49 @@
       ],
       "examples": [
         "Save this hero section for everyone"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "embed",
+      "name": "Turns texts into 384-number vectors with the node's local model",
+      "description": "Turns texts into 384-number vectors with the node's local model. Not over A2A: an HTTP door — POST /api/embed (extension https://fractera.ai/a2a/ext/node/v1, «doors»)",
+      "tags": [
+        "http-door",
+        "embeddings",
+        "vectors",
+        "multilingual",
+        "local-model"
+      ],
+      "examples": [
+        "Count the vectors of a diary line and a question in Russian",
+        "Turn 200 skill descriptions into vectors for the graph"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "embed-status",
+      "name": "Tells which model counts vectors, its size and readiness",
+      "description": "Tells which model counts vectors, its size and readiness. Not over A2A: an HTTP door — GET /api/embed-status (extension https://fractera.ai/a2a/ext/node/v1, «doors»)",
+      "tags": [
+        "http-door",
+        "embeddings",
+        "model",
+        "health"
+      ],
+      "examples": [
+        "Which model counts the vectors of this node and its size?",
+        "Is the vectors model loaded yet?"
       ],
       "inputModes": [
         "application/json"
