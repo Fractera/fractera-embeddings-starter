@@ -1,0 +1,24 @@
+{
+  "id": "embeddings",
+  "name": "embeddings",
+  "shortDescription": "WEB4 element embeddings, born from fractera-native-item-starter v0.1.34 on 2026-11-03. Its capabilities are written by its agent from Settings → Capabilities description.",
+  "longDescription": "",
+  "accepts": "",
+  "returns": "",
+  "designSkill": "impeccable",
+  "isFracteraArchitecture": true,
+  "framework": "next",
+  "elementType": "native",
+  "visibility": "node",
+  "calls": [
+    "auth",
+    "data",
+    "config",
+    "design"
+  ],
+  "messengers": {
+    "h2a": true,
+    "h2h": false,
+    "a2a": false
+  }
+}
