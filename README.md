@@ -5,9 +5,9 @@ multilingual model, on this computer — no key, no internet, no outside service
 vectors element, the knowledge graph and the deep memory ask it; the core and the other elements send texts to the vectors element
 and count nothing themselves.
 
-Born from `fractera-native-item-starter` v0.1.34 (node step 626-2) — without the template's three-system check
-`.github/workflows/three-os.yml`: the token that filled this repository on 2026-11-03 had no `workflow` scope, and GitHub refuses a
-workflow file without it. It comes back after `gh auth refresh -h github.com -s workflow`.
+Born from `fractera-native-item-starter` v0.1.34 (node step 626-2). Two checks run on every push, on Linux x64, macOS arm64
+and Windows x64: the template's `three-os.yml` (the build with every guard) and the element's own `embeddings-three-os.yml` — the
+model from the release, then `test:embed`: the same vectors as the 626-1 reference counted on an Intel Mac.
 
 ## The model
 
