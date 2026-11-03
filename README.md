@@ -74,9 +74,11 @@ After the first vector, `process.exit()` aborts the process inside `onnxruntime-
 Invalid argument»). So once the model is loaded, SIGINT and SIGTERM end the process by that same signal, without `exit()`
 (`lib/embed/model.mjs`); nothing is lost — the element keeps no state.
 
-## Windows and Linux — not measured yet
+## Windows and Linux
 
-Measured on macOS only (the owner, 2026-11-03: Windows and Linux come back by his word). What the package itself says:
+Measured by hand on the owner's Intel Mac; on Linux x64, Windows x64 and macOS arm64 by the check `embeddings-three-os` on every
+push (2026-11-03: the 626-1 vectors to cos 1.000000 on all three). Not measured: a Windows without the Visual C++ runtime (the
+runners have it) and a person's own Windows or Linux machine. What the package itself says:
 
 - **Windows x64 and arm64.** The CPU build is inside `onnxruntime-node` 1.21.0 — nothing is downloaded at install. Its DLLs import
   the Microsoft Visual C++ 2015–2022 runtime (`VCRUNTIME140.dll`, `VCRUNTIME140_1.dll`, `MSVCP140.dll`, `MSVCP140_1.dll`) and
