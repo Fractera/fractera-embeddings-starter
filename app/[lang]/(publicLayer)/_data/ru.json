@@ -1,11 +1,210 @@
 {
-  "title": "Эталонный нативный шаблон",
-  "description": "Эталонный стартовый шаблон нативного элемента Fractera.",
+  "title": "Fractera Embeddings — поиск по смыслу на вашем компьютере",
+  "description": "Элемент embeddings узла Fractera превращает тексты в векторы из 384 чисел локальной многоязычной моделью. Без ключа OpenAI, и тексты не покидают компьютер.",
+  "keywords": "эмбеддинги, векторы, поиск по смыслу, MiniLM, sentence-transformers, onnxruntime, локальный ИИ, Claude Code, Fractera, открытый код",
   "blocks": [
     {
-      "kind": "widget-static-reference-title",
-      "bid": "rf001"
+      "kind": "widget-static-embeddings-landing",
+      "bid": "gpoa3"
+    },
+    {
+      "kind": "block-hero-centered",
+      "pill": "OpenSource Web4 agent & app starter kit",
+      "title": "Поиск по смыслу, посчитанный на вашем компьютере",
+      "description": "Каждый элемент узла превращает свои тексты в векторы здесь: одна локальная многоязычная модель, без ключа OpenAI, и тексты не покидают компьютер.",
+      "cta": {
+        "label": "Подключить элемент",
+        "href": "#connect"
+      },
+      "secondary": {
+        "label": "Как устроено",
+        "href": "#hood"
+      },
+      "bid": "pp2q8"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "route",
+      "title": "Как текст становится вектором",
+      "bid": "eh42w"
+    },
+    {
+      "kind": "text-h4",
+      "text": "Ваш элемент",
+      "bid": "kc22v"
+    },
+    {
+      "kind": "text-p",
+      "text": "Присылает свои тексты: строку дневника, вопрос, описание навыка. До 256 за один вызов.",
+      "bid": "pi3a6"
+    },
+    {
+      "kind": "text-h4",
+      "text": "Embeddings",
+      "bid": "bq8uu"
+    },
+    {
+      "kind": "text-p",
+      "text": "Проверяет ключ узла и передаёт тексты модели, по одной пачке за раз.",
+      "bid": "vvaob"
+    },
+    {
+      "kind": "text-h4",
+      "text": "Модель",
+      "bid": "w690w"
+    },
+    {
+      "kind": "text-p",
+      "text": "Читает до 128 токенов каждого текста на любом из примерно 50 языков.",
+      "bid": "vl57i"
+    },
+    {
+      "kind": "text-h4",
+      "text": "384 числа",
+      "bid": "bewii"
+    },
+    {
+      "kind": "text-p",
+      "text": "Каждый текст возвращается вектором, и тексты с одинаковым смыслом оказываются рядом.",
+      "bid": "wyzpj"
+    },
+    {
+      "kind": "text-small",
+      "text": "Векторы хранят элемент vectors, граф знаний и глубокая память и находят текст по смыслу, какими бы словами и на каком бы языке ни был задан вопрос.",
+      "bid": "kllx7"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "vector",
+      "title": "Один смысл — одно место",
+      "bid": "snufg"
+    },
+    {
+      "kind": "text-p",
+      "text": "Каждая полоска — одно из 384 чисел. «Привет» и «Hello» — одно приветствие на двух языках, поэтому их векторы почти совпадают. «Fix a leaking kitchen faucet» значит другое и с приветствием почти ничего общего не имеет. Число рядом со строкой — её косинус с первой строкой: 1 — тот же смысл, 0 — ничего общего.",
+      "bid": "awhdg"
+    },
+    {
+      "kind": "text-list",
+      "items": [
+        "Привет",
+        "Hello",
+        "Fix a leaking kitchen faucet"
+      ],
+      "bid": "j6xbn"
+    },
+    {
+      "kind": "text-small",
+      "text": "Это векторы из собственной проверки элемента, посчитанные на Mac с Intel. Linux, Windows и Apple silicon дают те же числа.",
+      "bid": "zpsja"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "solves",
+      "title": "Что меняется для вас",
+      "bid": "opn0o"
+    },
+    {
+      "kind": "text-table",
+      "head": [
+        "Без него",
+        "С элементом embeddings"
+      ],
+      "rows": [
+        [
+          "Для поиска по смыслу нужен ключ OpenAI и счёт за каждый текст",
+          "Ни ключа, ни счёта: модель работает на вашем компьютере"
+        ],
+        [
+          "Каждый сохранённый текст уходит во внешний сервис",
+          "Тексты не покидают компьютер"
+        ],
+        [
+          "Модель за чужим API может смениться без предупреждения",
+          "Файл модели закреплён контрольной суммой и меняется только по решению владельца"
+        ],
+        [
+          "Векторы, посчитанные в другом месте, могут не совпасть с вашими",
+          "Один и тот же текст даёт один и тот же вектор на Linux, Windows и macOS — проверено"
+        ],
+        [
+          "Каждый элемент считает векторы по-своему",
+          "Одна модель и одна дверь на весь узел"
+        ]
+      ],
+      "bid": "k8pj0"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "connect",
+      "title": "Подключить свой элемент",
+      "bid": "leoup"
+    },
+    {
+      "kind": "text-p",
+      "text": "Любой элемент узла зовёт дверь на этом компьютере с ключом узла. Он присылает до 256 текстов и получает по одному нормированному вектору на каждый, в том же порядке.",
+      "bid": "kyyy4"
+    },
+    {
+      "kind": "text-code",
+      "text": "curl -s \"$EMBEDDINGS_URL/api/embed\" \\\n  -H \"X-Node-Key: $SETTINGS_SECRET\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"texts\":[\"Привет\",\"Hello\"]}'\n\n{ \"model\": \"paraphrase-multilingual-MiniLM-L12-v2\", \"dims\": 384,\n  \"vectors\": [[0.0356, 0.0416, …], [0.0312, …]] }",
+      "bid": "fqwew"
+    },
+    {
+      "kind": "text-p",
+      "text": "`GET /api/embed-status` называет модель, её размер и готова ли она. Вызывающий узнаёт размер здесь и никогда не подставляет его сам.",
+      "bid": "d0rbr"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "hood",
+      "title": "Как устроено",
+      "bid": "gs2vq"
+    },
+    {
+      "kind": "text-table",
+      "head": [
+        "Часть",
+        "Что это"
+      ],
+      "rows": [
+        [
+          "Модель",
+          "`paraphrase-multilingual-MiniLM-L12-v2` от sentence-transformers: 384 числа, около 50 языков, 128 токенов каждого текста, усреднение по токенам, нормированные векторы"
+        ],
+        [
+          "Среда",
+          "`onnxruntime-node` 1.21.0 через `@huggingface/transformers` 3.8.1, внутри собственного процесса элемента, без Python"
+        ],
+        [
+          "Файл",
+          "235 МБ, скачивается один раз из релиза самого элемента на GitHub и сверяется по sha256 перед каждой загрузкой"
+        ],
+        [
+          "Память",
+          "Около 0.8 ГБ после загрузки, до 1.0 ГБ, пока считаются 100 текстов"
+        ],
+        [
+          "Скорость",
+          "Короткий текст — за 6–25 мс, 100 длинных — примерно за 8 секунд на ноутбуке Intel 2016 года"
+        ],
+        [
+          "Смена модели",
+          "Пришлось бы пересчитать каждый сохранённый вектор узла, поэтому решает только владелец"
+        ]
+      ],
+      "bid": "nql28"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "credits",
+      "title": "Открытый код",
+      "bid": "x2h5x"
+    },
+    {
+      "kind": "text-p",
+      "text": "Сделано Fractera для протокола [Lagrix](https://lagrix.dev) и для любого web2-проекта, которому нужен поиск по смыслу без внешнего сервиса. Код открыт по лицензии MIT: [Fractera/fractera-embeddings-starter](https://github.com/Fractera/fractera-embeddings-starter). Модель — [paraphrase-multilingual-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2), авторы Nils Reimers и Iryna Gurevych, в ONNX-версии Qdrant, Apache-2.0.",
+      "bid": "f0olk"
     }
-  ],
-  "keywords": ""
+  ]
 }

@@ -1,11 +1,210 @@
 {
-  "title": "Reference native template",
-  "description": "The reference starter template of a Fractera native element.",
-  "keywords": "",
+  "title": "Fractera Embeddings — search by meaning on your own computer",
+  "description": "The embeddings element of a Fractera node turns texts into 384-number vectors with a local multilingual model. No OpenAI key, and the texts never leave the computer.",
+  "keywords": "embeddings, vectors, search by meaning, MiniLM, sentence-transformers, onnxruntime, local AI, Claude Code, Fractera, open source",
   "blocks": [
     {
-      "kind": "widget-static-reference-title",
-      "bid": "rf001"
+      "kind": "widget-static-embeddings-landing",
+      "bid": "gpoa3"
+    },
+    {
+      "kind": "block-hero-centered",
+      "pill": "OpenSource Web4 agent & app starter kit",
+      "title": "Search by meaning, counted on your own computer",
+      "description": "Every element of your node turns its texts into vectors here: one local multilingual model, no OpenAI key, and the texts never leave the computer.",
+      "cta": {
+        "label": "Connect your element",
+        "href": "#connect"
+      },
+      "secondary": {
+        "label": "Under the hood",
+        "href": "#hood"
+      },
+      "bid": "pp2q8"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "route",
+      "title": "How a text becomes a vector",
+      "bid": "eh42w"
+    },
+    {
+      "kind": "text-h4",
+      "text": "Your element",
+      "bid": "kc22v"
+    },
+    {
+      "kind": "text-p",
+      "text": "Sends its texts: a diary line, a question, the description of a skill. Up to 256 in one call.",
+      "bid": "pi3a6"
+    },
+    {
+      "kind": "text-h4",
+      "text": "Embeddings",
+      "bid": "bq8uu"
+    },
+    {
+      "kind": "text-p",
+      "text": "Checks the node key and passes the texts to the model, one batch at a time.",
+      "bid": "vvaob"
+    },
+    {
+      "kind": "text-h4",
+      "text": "The model",
+      "bid": "w690w"
+    },
+    {
+      "kind": "text-p",
+      "text": "Reads up to 128 tokens of each text, in any of about 50 languages.",
+      "bid": "vl57i"
+    },
+    {
+      "kind": "text-h4",
+      "text": "384 numbers",
+      "bid": "bewii"
+    },
+    {
+      "kind": "text-p",
+      "text": "Each text comes back as a vector, and texts that mean the same come back close together.",
+      "bid": "wyzpj"
+    },
+    {
+      "kind": "text-small",
+      "text": "The vectors element, the knowledge graph and the deep memory keep these vectors and find a text by its meaning, whatever words and language the question uses.",
+      "bid": "kllx7"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "vector",
+      "title": "One meaning, one place",
+      "bid": "snufg"
+    },
+    {
+      "kind": "text-p",
+      "text": "Each bar is one of the 384 numbers. «Привет» and «Hello» are one greeting in two languages, so their vectors nearly coincide. «Fix a leaking kitchen faucet» means something else and has almost nothing in common with the greeting. The number next to a row is its cosine with the first row: 1 means the same meaning, 0 means unrelated.",
+      "bid": "awhdg"
+    },
+    {
+      "kind": "text-list",
+      "items": [
+        "Привет",
+        "Hello",
+        "Fix a leaking kitchen faucet"
+      ],
+      "bid": "j6xbn"
+    },
+    {
+      "kind": "text-small",
+      "text": "These are the vectors of this element’s own test, counted on an Intel Mac. Linux, Windows and Apple silicon give the same numbers.",
+      "bid": "zpsja"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "solves",
+      "title": "What changes for you",
+      "bid": "opn0o"
+    },
+    {
+      "kind": "text-table",
+      "head": [
+        "Without it",
+        "With the embeddings element"
+      ],
+      "rows": [
+        [
+          "Search by meaning needs an OpenAI key and a bill for every text",
+          "No key and no bill: the model runs on your computer"
+        ],
+        [
+          "Every text you store goes to an outside service",
+          "The texts never leave the computer"
+        ],
+        [
+          "The model behind an outside API can change without notice",
+          "The model file is pinned by its checksum and changes only when the owner decides"
+        ],
+        [
+          "Vectors counted elsewhere may not match yours",
+          "The same text gives the same vector on Linux, Windows and macOS, measured"
+        ],
+        [
+          "Each element counts vectors its own way",
+          "One model and one door for the whole node"
+        ]
+      ],
+      "bid": "k8pj0"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "connect",
+      "title": "Connect your element",
+      "bid": "leoup"
+    },
+    {
+      "kind": "text-p",
+      "text": "Any element of the node calls the door on this computer with the node key. It sends up to 256 texts and gets one normalized vector for each, in the same order.",
+      "bid": "kyyy4"
+    },
+    {
+      "kind": "text-code",
+      "text": "curl -s \"$EMBEDDINGS_URL/api/embed\" \\\n  -H \"X-Node-Key: $SETTINGS_SECRET\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"texts\":[\"Привет\",\"Hello\"]}'\n\n{ \"model\": \"paraphrase-multilingual-MiniLM-L12-v2\", \"dims\": 384,\n  \"vectors\": [[0.0356, 0.0416, …], [0.0312, …]] }",
+      "bid": "fqwew"
+    },
+    {
+      "kind": "text-p",
+      "text": "`GET /api/embed-status` names the model, its size and whether it is ready. A caller learns the size there and never assumes it.",
+      "bid": "d0rbr"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "hood",
+      "title": "Under the hood",
+      "bid": "gs2vq"
+    },
+    {
+      "kind": "text-table",
+      "head": [
+        "Part",
+        "What it is"
+      ],
+      "rows": [
+        [
+          "The model",
+          "`paraphrase-multilingual-MiniLM-L12-v2` from sentence-transformers: 384 numbers, about 50 languages, 128 tokens of each text, mean pooling, normalized vectors"
+        ],
+        [
+          "The runtime",
+          "`onnxruntime-node` 1.21.0 through `@huggingface/transformers` 3.8.1, inside this element’s own process, with no Python"
+        ],
+        [
+          "The file",
+          "235 MB, downloaded once from this element’s own GitHub release and checked by its sha256 before every load"
+        ],
+        [
+          "Memory",
+          "About 0.8 GB after the load, up to about 1.0 GB while 100 texts are counted"
+        ],
+        [
+          "Speed",
+          "A short text in 6 to 25 ms, 100 long texts in about 8 seconds on a 2016 Intel laptop"
+        ],
+        [
+          "Changing the model",
+          "Every stored vector of the node would have to be counted again, so only the owner decides it"
+        ]
+      ],
+      "bid": "nql28"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "credits",
+      "title": "Open source",
+      "bid": "x2h5x"
+    },
+    {
+      "kind": "text-p",
+      "text": "Built by Fractera for the [Lagrix](https://lagrix.dev) protocol and for any web2 project that needs search by meaning without an outside service. The code is open under the MIT license: [Fractera/fractera-embeddings-starter](https://github.com/Fractera/fractera-embeddings-starter). The model is [paraphrase-multilingual-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) by Nils Reimers and Iryna Gurevych, in the ONNX export by Qdrant, Apache-2.0.",
+      "bid": "f0olk"
     }
   ]
 }
