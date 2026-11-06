@@ -75,6 +75,17 @@
     },
     {
       "kind": "block-section-head",
+      "id": "power",
+      "title": "On from the start",
+      "bid": "q0000"
+    },
+    {
+      "kind": "text-p",
+      "text": "This element starts with the node. The node holds the switch: the architect turns it off or on with a word to the main agent, or on the element's settings page in the core.",
+      "bid": "q0001"
+    },
+    {
+      "kind": "block-section-head",
       "id": "vector",
       "title": "One meaning, one place",
       "bid": "snufg"
@@ -133,6 +144,58 @@
         ]
       ],
       "bid": "k8pj0"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "compare",
+      "title": "Beside an OpenAI model",
+      "bid": "q0002"
+    },
+    {
+      "kind": "text-p",
+      "text": "Everything here runs on your own computer: the model file lies in the node, and the texts never go out. This is how it compares with OpenAI's smallest embedding model.",
+      "bid": "q0003"
+    },
+    {
+      "kind": "text-table",
+      "head": [
+        "",
+        "The node's embeddings",
+        "OpenAI text-embedding-3-small"
+      ],
+      "rows": [
+        [
+          "Where it is counted",
+          "On your computer",
+          "On OpenAI's servers, over the internet"
+        ],
+        [
+          "Key and bill",
+          "None",
+          "An OpenAI key; about 62,500 pages per dollar"
+        ],
+        [
+          "Where your texts go",
+          "Nowhere",
+          "To OpenAI"
+        ],
+        [
+          "Vector size",
+          "384 numbers",
+          "1536 numbers"
+        ],
+        [
+          "Longest text read",
+          "128 tokens",
+          "8192 tokens"
+        ]
+      ],
+      "bid": "q0004"
+    },
+    {
+      "kind": "text-small",
+      "text": "OpenAI's figures: its embeddings guide, developers.openai.com/api/docs/guides/embeddings.",
+      "bid": "q0005"
     },
     {
       "kind": "block-section-head",
@@ -197,6 +260,31 @@
     },
     {
       "kind": "block-section-head",
+      "id": "builder",
+      "title": "Your own builder comes with it",
+      "bid": "q0006"
+    },
+    {
+      "kind": "text-p",
+      "text": "Every element of the node comes with its own Claude Code agent and can get its own Telegram bot. When something in this element should change, write to its bot from your phone, and the agent updates the logic or the design.",
+      "bid": "q0007"
+    },
+    {
+      "kind": "text-p",
+      "text": "The agent works only in its element's folder and never reads the whole node, so each change costs fewer tokens. Your Claude Code subscription pays for it.",
+      "bid": "q0008"
+    },
+    {
+      "kind": "text-list",
+      "items": [
+        "The element's bot is connected in the core, on its «Telegram» page.",
+        "The agent returns a commit; you look at it in «Preview» and accept it or turn it down.",
+        "At the computer, the agent's terminal is in the core, in this element's «Build»."
+      ],
+      "bid": "q0009"
+    },
+    {
+      "kind": "block-section-head",
       "id": "credits",
       "title": "Open source",
       "bid": "x2h5x"
@@ -205,6 +293,31 @@
       "kind": "text-p",
       "text": "Built by Fractera for the [Lagrix](https://lagrix.dev) protocol and for any web2 project that needs search by meaning without an outside service. The code is open under the MIT license: [Fractera/fractera-embeddings-starter](https://github.com/Fractera/fractera-embeddings-starter). The model is [paraphrase-multilingual-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) by Nils Reimers and Iryna Gurevych, in the ONNX export by Qdrant, Apache-2.0.",
       "bid": "f0olk"
+    },
+    {
+      "kind": "block-section-head",
+      "id": "faq",
+      "title": "Questions and answers",
+      "bid": "q000a"
+    },
+    {
+      "kind": "block-faq",
+      "title": "Questions and answers",
+      "items": [
+        {
+          "q": "Does anything leave my computer?",
+          "a": "No. The texts, the model and the vectors stay on the computer; no key and no internet are needed."
+        },
+        {
+          "q": "When is OpenAI's model the better choice?",
+          "a": "For long texts in one piece: it reads up to 8192 tokens, this model 128. For the node's short texts, a diary line or a question, the local model is enough."
+        },
+        {
+          "q": "Are the vectors the same on every computer?",
+          "a": "Yes. The same text gives the same vector on Linux, Windows and macOS; the element checks it itself."
+        }
+      ],
+      "bid": "q000b"
     }
   ]
 }
