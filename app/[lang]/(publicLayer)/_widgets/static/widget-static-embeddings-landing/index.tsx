@@ -10,6 +10,7 @@ import { TEXT_SET } from "@/lib/content/text-set"
 import { cn } from "@/lib/utils"
 import { VectorView } from "./vector"
 import { landing, type Hero, type Section } from "./words"
+import { BuilderArt } from "./builder-art"
 
 // THE HOME PAGE OF THE EMBEDDINGS ELEMENT (node step 626, the owner 2026-11-03: «Да, по образцу vectors»; «for landing for embending
 // call imcabale scill and check stripe landing»). Built like the Stripe element's landing (step 573-7): the words are the page's data
@@ -42,7 +43,10 @@ function SectionView({ section }: { section: Section }) {
     case "solves": return <Contrast section={section} />
     case "connect": return <Connect section={section} />
     case "hood": return <Hood section={section} />
-    case "credits": return <Credits section={section} />
+    // 662-7 (владелец 2026-11-06: «this sections not have full wight»): строитель, вопросы и открытый код — на всю ширину.
+    case "builder": return <BuilderWide section={section} />
+    case "faq": return <FaqWide section={section} />
+    case "credits": return <CreditsWide section={section} />
     default: return <Generic section={section} />
   }
 }
@@ -187,17 +191,6 @@ function Hood({ section }: { section: Section }) {
   )
 }
 
-function Credits({ section }: { section: Section }) {
-  const p = first(section, "text-p")
-  return (
-    <section data-block="pca9d" id={section.id} className="border-t border-border bg-muted/40">
-      <div data-block="vcwek" className={cn(WRAP, "flex flex-col gap-2 py-10")}>
-        <H2 data-block="gbk4j" variant="ui">{section.title}</H2>
-        {p && <Small data-block="lqyfj" className="max-w-[80ch] text-pretty [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4">{inline(p.text, "credits")}</Small>}
-      </div>
-    </section>
-  )
-}
 
 /** A section with an unknown `id` — the element's own typography. */
 // onlyFaq
@@ -205,7 +198,7 @@ function Generic({ section }: { section: Section }) {
   return (
     <section data-block="vy1yu" id={section.id} className={cn(WRAP, "scroll-mt-20 py-16 md:py-24")}>
       {/* 662-2: a section of only questions and answers — the block draws its own heading. */}
-      {!(section.blocks.length === 1 && (section.blocks[0].kind as string) === "block-faq") && <H2 data-block="evd82" className="text-balance">{section.title}</H2>}
+      {!(section.blocks.length === 1 && ["block-faq", "block-cards", "block-flow", "block-access-map"].includes(section.blocks[0].kind as string)) && <H2 data-block="evd82" className="text-balance">{section.title}</H2>}
       <div data-block="cpkfk" className="mt-6 flex max-w-[70ch] flex-col gap-4">
         {section.blocks.map((b, i) => {
           const Render = TEXT_SET[b.kind]
@@ -213,6 +206,72 @@ function Generic({ section }: { section: Section }) {
           if (Render) return <Render key={i} blockKey={`${section.id}-${i}`} {...b} />
           return <div data-block="e8bpq" key={i} className="min-w-0">{renderBlocks([b], `${section.id}-${i}`)}</div>
         })}
+      </div>
+    </section>
+  )
+}
+
+// ── 662-7: секции на всю ширину ─────────────────────────────────────────────────────────────────────────────────────────────
+const isRu = (t: string) => /[А-Яа-яЁё]/.test(t)
+const textsOf = (section: Section) => section.blocks.filter((b) => b.kind === "text-p") as unknown as { text: string }[]
+
+/** Свой строитель: слова слева, справа картинка «элемент и его части» (агент, бот, коммит, токены). */
+function BuilderWide({ section }: { section: Section }) {
+  const list = section.blocks.find((b) => b.kind === "text-list") as unknown as { items: string[] } | undefined
+  return (
+    <section data-block="qyaqc" id={section.id} className="scroll-mt-20 border-y border-border bg-muted/40">
+      <div data-block="ncr8z" className={cn(WRAP, "grid items-center gap-10 py-16 md:grid-cols-2 md:gap-14 md:py-24")}>
+        <div data-block="gury9" className="flex min-w-0 flex-col gap-5">
+          <H2 data-block="d1h7y" className="text-balance">{section.title}</H2>
+          {textsOf(section).map((p, i) => <P data-block="kuu6n" key={i} className="text-pretty">{inline(p.text, `builder-${i}`)}</P>)}
+          {list && (
+            <ul data-block="siogs" className="mt-2 flex flex-col divide-y divide-border border-y border-border">
+              {list.items.map((t, i) => <li data-block="g9en3" key={i} className="py-3 text-pretty text-foreground">{inline(t, `builder-li-${i}`)}</li>)}
+            </ul>
+          )}
+        </div>
+        <div data-block="sa6q0" className="min-w-0"><BuilderArt ru={isRu(section.title)} title={section.title} /></div>
+      </div>
+    </section>
+  )
+}
+
+type FaqBlock = { kind: "block-faq"; title: string; items: { q: string; a: string }[] }
+const plainText = (t: string) => t.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+
+/** Вопросы и ответы: две колонки на всю ширину; разметка FAQPage для поисковиков — как у блока каталога. */
+function FaqWide({ section }: { section: Section }) {
+  const faq = (section.blocks as unknown as FaqBlock[]).find((b) => b.kind === "block-faq")
+  if (!faq) return null
+  const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.items.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plainText(f.a) } })) }
+  return (
+    <section data-block="p0dfm" id={section.id} aria-labelledby="faq-heading" className={cn(WRAP, "scroll-mt-20 py-16 md:py-24")}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <H2 data-block="kc887" id="faq-heading" className="text-balance">{faq.title}</H2>
+      <dl data-block="dg5sk" className="mt-10 grid gap-4 md:grid-cols-2">
+        {faq.items.map((f, i) => (
+          <div data-block="vmm22" key={i} className="rounded-2xl border border-border bg-muted/40 p-5">
+            <dt data-block="zh6mw" className="text-base font-semibold text-foreground">{f.q}</dt>
+            <dd data-block="tjog8" className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{inline(f.a, `faq-${i}`)}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}
+
+/** Открытый код: слова на всю ширину, справа кнопка репозитория (адрес — из тех же слов). */
+function CreditsWide({ section }: { section: Section }) {
+  const p = textsOf(section)[0]
+  const repo = p?.text.match(/\((https:\/\/github\.com\/[^)\s]+)\)/)?.[1]
+  return (
+    <section data-block="ict19" id={section.id} className="border-t border-border bg-muted/40">
+      <div data-block="jhbt1" className={cn(WRAP, "grid items-center gap-6 py-10 md:grid-cols-[minmax(0,1fr)_auto]")}>
+        <div data-block="xzj15" className="flex min-w-0 flex-col gap-2">
+          <H2 data-block="hd2wu" variant="ui">{section.title}</H2>
+          {p && <Small data-block="op22s" className="text-pretty [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4">{inline(p.text, "credits")}</Small>}
+        </div>
+        {repo && <a href={repo} className={cn(buttonVariants({ variant: "outline" }), "h-10 px-4")}>GitHub →</a>}
       </div>
     </section>
   )
