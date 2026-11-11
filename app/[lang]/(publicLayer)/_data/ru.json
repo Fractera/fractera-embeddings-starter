@@ -2,13 +2,13 @@
   "title": "Fractera Embeddings — поиск по смыслу на вашем компьютере",
   "description": "Элемент embeddings узла Fractera превращает тексты в векторы из 384 чисел локальной многоязычной моделью. Без ключа OpenAI, и тексты не покидают компьютер.",
   "keywords": "эмбеддинги, векторы, поиск по смыслу, MiniLM, sentence-transformers, onnxruntime, локальный ИИ, Claude Code, Fractera, открытый код",
-  "blocks": [
+  "body": [
     {
       "kind": "widget-static-embeddings-landing",
       "bid": "gpoa3"
     },
     {
-      "kind": "block-hero-centered",
+      "kind": "section-hero-centered",
       "pill": "OpenSource Web4 agent & app starter kit",
       "title": "Поиск по смыслу, посчитанный на вашем компьютере",
       "description": "Каждый элемент узла превращает свои тексты в векторы здесь: одна локальная многоязычная модель, без ключа OpenAI, и тексты не покидают компьютер.",
@@ -23,7 +23,7 @@
       "bid": "pp2q8"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "route",
       "title": "Как текст становится вектором",
       "bid": "eh42w"
@@ -74,7 +74,7 @@
       "bid": "kllx7"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "power",
       "title": "Включён, засыпает только при нехватке памяти",
       "bid": "q0000"
@@ -85,7 +85,7 @@
       "bid": "q0001"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "vector",
       "title": "Один смысл — одно место",
       "bid": "snufg"
@@ -110,7 +110,7 @@
       "bid": "zpsja"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "solves",
       "title": "Что меняется для вас",
       "bid": "opn0o"
@@ -146,7 +146,7 @@
       "bid": "k8pj0"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "compare",
       "title": "Рядом с моделью OpenAI",
       "bid": "q0002"
@@ -198,7 +198,7 @@
       "bid": "q0005"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "connect",
       "title": "Подключите свой элемент",
       "bid": "leoup"
@@ -219,7 +219,7 @@
       "bid": "d0rbr"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "hood",
       "title": "Что под капотом",
       "bid": "gs2vq"
@@ -259,7 +259,7 @@
       "bid": "nql28"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "builder",
       "title": "Свой строитель в комплекте",
       "bid": "q0006"
@@ -284,7 +284,7 @@
       "bid": "q0009"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "credits",
       "title": "Открытый код",
       "bid": "x2h5x"
@@ -295,13 +295,13 @@
       "bid": "f0olk"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "faq",
       "title": "Вопросы и ответы",
       "bid": "q000a"
     },
     {
-      "kind": "block-faq",
+      "kind": "section-faq",
       "title": "Вопросы и ответы",
       "items": [
         {

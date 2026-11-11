@@ -1,7 +1,7 @@
 import reference from "@/lib/embed/reference-626-1.json"
 import { H2, P, Small } from "@/components/ui/typography"
-import { inline } from "@/lib/blocks/inline"
-import type { Block } from "@/lib/content/blocks/types"
+import { inline } from "@/lib/content/inline"
+import type { PageItem } from "@/lib/content/page-items"
 import { cn } from "@/lib/utils"
 import type { Section } from "./words"
 
@@ -9,8 +9,8 @@ import type { Section } from "./words"
 // the 626-1 reference this element tests itself against (`lib/embed/reference-626-1.json`), and each is drawn as its 384 numbers —
 // one bar a number, up for positive, down for negative. Next to every row after the first: its cosine with the first row, counted
 // here from the same numbers. A text missing from the reference is simply not drawn.
-type Of<K extends Block["kind"]> = Block & { kind: K }
-const first = <K extends Block["kind"]>(s: Section, kind: K) => s.blocks.find((b): b is Of<K> => b.kind === kind)
+type Of<K extends PageItem["kind"]> = PageItem & { kind: K }
+const first = <K extends PageItem["kind"]>(s: Section, kind: K) => s.body.find((b): b is Of<K> => b.kind === kind)
 
 const W = 384
 const H = 56

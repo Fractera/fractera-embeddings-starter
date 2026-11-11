@@ -2,13 +2,13 @@
   "title": "Fractera Embeddings — search by meaning on your own computer",
   "description": "The embeddings element of a Fractera node turns texts into 384-number vectors with a local multilingual model. No OpenAI key, and the texts never leave the computer.",
   "keywords": "embeddings, vectors, search by meaning, MiniLM, sentence-transformers, onnxruntime, local AI, Claude Code, Fractera, open source",
-  "blocks": [
+  "body": [
     {
       "kind": "widget-static-embeddings-landing",
       "bid": "gpoa3"
     },
     {
-      "kind": "block-hero-centered",
+      "kind": "section-hero-centered",
       "pill": "OpenSource Web4 agent & app starter kit",
       "title": "Search by meaning, counted on your own computer",
       "description": "Every element of your node turns its texts into vectors here: one local multilingual model, no OpenAI key, and the texts never leave the computer.",
@@ -23,7 +23,7 @@
       "bid": "pp2q8"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "route",
       "title": "How a text becomes a vector",
       "bid": "eh42w"
@@ -74,7 +74,7 @@
       "bid": "kllx7"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "power",
       "title": "On, asleep only when memory is short",
       "bid": "q0000"
@@ -85,7 +85,7 @@
       "bid": "q0001"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "vector",
       "title": "One meaning, one place",
       "bid": "snufg"
@@ -110,7 +110,7 @@
       "bid": "zpsja"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "solves",
       "title": "What changes for you",
       "bid": "opn0o"
@@ -146,7 +146,7 @@
       "bid": "k8pj0"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "compare",
       "title": "Beside an OpenAI model",
       "bid": "q0002"
@@ -198,7 +198,7 @@
       "bid": "q0005"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "connect",
       "title": "Connect your element",
       "bid": "leoup"
@@ -219,7 +219,7 @@
       "bid": "d0rbr"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "hood",
       "title": "Under the hood",
       "bid": "gs2vq"
@@ -259,7 +259,7 @@
       "bid": "nql28"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "builder",
       "title": "Your own builder comes with it",
       "bid": "q0006"
@@ -284,7 +284,7 @@
       "bid": "q0009"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "credits",
       "title": "Open source",
       "bid": "x2h5x"
@@ -295,13 +295,13 @@
       "bid": "f0olk"
     },
     {
-      "kind": "block-section-head",
+      "kind": "section-head",
       "id": "faq",
       "title": "Questions and answers",
       "bid": "q000a"
     },
     {
-      "kind": "block-faq",
+      "kind": "section-faq",
       "title": "Questions and answers",
       "items": [
         {
